@@ -3,334 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Физика 2026 | Таалай тарабынан түзүлдү</title>
+    <title>Физика 2026 | Таалай</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <style>
-        :root {
-            --primary: #00d4ff;
-            --bg: #050a15;
-            --card-bg: #111b2d;
-            --text: #e2e8f0;
-            --accent: #00ffcc;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            margin: 0;
-            background-color: var(--bg);
-            color: var(--text);
-            display: flex;
-            min-height: 100vh;
-        }
-
-        /* Капталдагы меню */
-        nav {
-            width: 280px;
-            background: #0a1428;
-            height: 100vh;
-            position: fixed;
-            display: flex;
-            flex-direction: column;
-            border-right: 1px solid #1e293b;
-            z-index: 100;
-        }
-
-        .nav-header {
-            padding: 30px 20px;
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--primary);
-            text-align: center;
-            letter-spacing: 1px;
-            border-bottom: 1px solid #1e293b;
-        }
-
-        .nav-links {
-            flex-grow: 1;
-            overflow-y: auto;
-            padding-top: 20px;
-        }
-
-        .nav-links a {
-            display: flex;
-            align-items: center;
-            padding: 14px 25px;
-            color: #94a3b8;
-            text-decoration: none;
-            transition: 0.3s;
-            cursor: pointer;
-            font-size: 15px;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            background: rgba(0, 212, 255, 0.1);
-            color: var(--primary);
-            border-left: 4px solid var(--primary);
-        }
-
-        .nav-links i { margin-right: 15px; width: 20px; text-align: center; }
-
-        /* Автордук блок (Sidebar астында) */
-        .sidebar-footer {
-            padding: 20px;
-            background: rgba(0,0,0,0.2);
-            border-top: 1px solid #1e293b;
-            text-align: center;
-        }
-
-        .author-badge {
-            font-size: 13px;
-            color: var(--accent);
-            border: 1px solid var(--accent);
-            padding: 5px 10px;
-            border-radius: 20px;
-            display: inline-block;
-        }
-
-        /* Негизги мазмун */
-        main {
-            margin-left: 280px;
-            padding: 40px;
-            width: 100%;
-            background: radial-gradient(circle at top right, #0f172a, #050a15);
-        }
-
-        .page {
-            display: none;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .page.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 20px;
-            margin-bottom: 25px;
-            border: 1px solid #1e293b;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        h1 { font-size: 32px; color: var(--primary); margin-bottom: 30px; }
-        h3 { color: var(--accent); margin-top: 0; }
-
-        .formula {
-            background: #000;
-            padding: 20px;
-            border-radius: 12px;
-            color: #fff;
-            font-family: 'Courier New', monospace;
-            display: block;
-            margin: 20px 0;
-            text-align: center;
-            font-size: 1.4rem;
-            border-left: 5px solid var(--primary);
-        }
-
-        input, button {
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid #334155;
-            background: #1e293b;
-            color: white;
-            margin: 5px;
-        }
-
-        button {
-            background: var(--primary);
-            color: #050a15;
-            font-weight: bold;
-            cursor: pointer;
-            border: none;
-            transition: 0.3s;
-        }
-
-        button:hover { background: var(--accent); transform: scale(1.05); }
-
-        footer {
-            text-align: center;
-            padding: 40px;
-            color: #64748b;
-            border-top: 1px solid #1e293b;
-            margin-top: 50px;
-        }
-
-        .highlight { color: var(--primary); font-weight: bold; }
+        :root { --primary: #00d4ff; --bg: #050a15; --card-bg: #111b2d; --text: #e2e8f0; --accent: #00ffcc; }
+        body { font-family: 'Inter', sans-serif; margin: 0; background-color: var(--bg); color: var(--text); display: flex; }
+        nav { width: 280px; background: #0a1428; height: 100vh; position: fixed; display: flex; flex-direction: column; border-right: 1px solid #1e293b; }
+        .nav-header { padding: 30px 20px; font-size: 24px; font-weight: 800; color: var(--primary); text-align: center; border-bottom: 1px solid #1e293b; }
+        .nav-links { flex-grow: 1; overflow-y: auto; }
+        .nav-links a { display: flex; align-items: center; padding: 12px 25px; color: #94a3b8; text-decoration: none; cursor: pointer; border-bottom: 1px solid rgba(255,255,255,0.02); }
+        .nav-links a:hover, .nav-links a.active { background: rgba(0, 212, 255, 0.1); color: var(--primary); border-left: 4px solid var(--primary); }
+        .nav-links i { margin-right: 15px; width: 20px; }
+        main { margin-left: 280px; padding: 40px; width: 100%; }
+        .page { display: none; max-width: 900px; margin: 0 auto; }
+        .page.active { display: block; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .card { background: var(--card-bg); padding: 20px; border-radius: 15px; margin-bottom: 15px; border: 1px solid #1e293b; }
+        .formula { background: #000; padding: 10px; border-radius: 8px; color: var(--accent); font-family: monospace; display: block; text-align: center; margin: 10px 0; }
+        .sidebar-footer { padding: 20px; text-align: center; border-top: 1px solid #1e293b; color: var(--accent); font-weight: bold; }
+        footer { text-align: center; padding: 40px; color: #64748b; border-top: 1px solid #1e293b; }
     </style>
 </head>
 <body>
 
 <nav>
-    <div class="nav-header">ФИЗИКА 2026</div>
+    <div class="nav-header">PHYSICS 2026</div>
     <div class="nav-links">
-        <a onclick="showPage('home')" id="link-home" class="active"><i class="fas fa-th-large"></i> Башкы бет</a>
+        <a onclick="showPage('home')" id="link-home" class="active"><i class="fas fa-home"></i> Башкы бет</a>
         <a onclick="showPage('mech')" id="link-mech"><i class="fas fa-cog"></i> Механика</a>
         <a onclick="showPage('thermo')" id="link-thermo"><i class="fas fa-fire"></i> Термодинамика</a>
         <a onclick="showPage('electro')" id="link-electro"><i class="fas fa-bolt"></i> Электр</a>
-        <a onclick="showPage('optics')" id="link-optics"><i class="fas fa-lightbulb"></i> Оптика</a>
-        <a onclick="showPage('quantum')" id="link-quantum"><i class="fas fa-atom"></i> Кванттык физика</a>
+        <a onclick="showPage('optics')" id="link-optics"><i class="fas fa-eye"></i> Оптика</a>
+        <a onclick="showPage('quantum')" id="link-quantum"><i class="fas fa-atom"></i> Кванттык</a>
         <a onclick="showPage('rel')" id="link-rel"><i class="fas fa-infinity"></i> Салыштырмалуулук</a>
         <a onclick="showPage('space')" id="link-space"><i class="fas fa-rocket"></i> Космос</a>
         <a onclick="showPage('calc')" id="link-calc"><i class="fas fa-calculator"></i> Калькулятор</a>
         <a onclick="showPage('test')" id="link-test"><i class="fas fa-tasks"></i> Тесттер</a>
     </div>
-    <div class="sidebar-footer">
-        <span class="author-badge">👨‍💻 Автор: Таалай</span>
-    </div>
+    <div class="sidebar-footer">Автор: Таалай</div>
 </nav>
 
 <main>
     <div id="home" class="page active">
-        <h1>Ааламдын сырларына кош келиңиз!</h1>
+        <h1>Кош келиңиз!</h1>
         <div class="card">
-            <h3>Долбоор тууралуу</h3>
-            <p>Бул интерактивдүү платформа физика илиминин негизги мыйзамдарын жөнөкөй жана заманбап тилде түшүндүрөт. Сайт 2026-жылдын стандарттарына ылайык иштелип чыккан.</p>
-            <p>Түзүүчү: <span class="highlight">Таалай</span></p>
+            <h3>Сайттын мүмкүнчүлүктөрү (10 багыт):</h3>
+            <ul>
+                <li>Интерактивдүү механика сабактары</li>
+                <li>Термодинамикалык процесстерди изилдөө</li>
+                <li>Электр тизмектерин эсептөө</li>
+                <li>Оптикалык кубулуштарды моделдөө</li>
+                <li>Кванттык дүйнөгө саякат</li>
+                <li>Эйнштейндин теорияларын талдоо</li>
+                <li>Астрофизикалык жаңылыктар</li>
+                <li>Автоматташтырылган калькуляторлор</li>
+                <li>Өзүн-өзү текшерүү тесттери</li>
+                <li>2026-жылдын акыркы илимий маалыматтары</li>
+            </ul>
         </div>
-        
     </div>
 
     <div id="mech" class="page">
-        <h1>Классикалык Механика</h1>
+        <h1>Механика (10 негизги түшүнүк)</h1>
         <div class="card">
-            <h3>Ньютондун экинчи мыйзамы</h3>
-            <p>Нерсеге таасир этүүчү күч анын массасы менен ылдамдануусунун көбөйтүндүсүнө барабар.</p>
-            <div class="formula">F = m · a</div>
-        </div>
-    </div>
-
-    <div id="thermo" class="page">
-        <h1>Термодинамика</h1>
-        <div class="card">
-            <h3>Жылуулук саны</h3>
-            <p>Затты ысытуу үчүн зарыл болгон жылуулук энергиясы:</p>
-            <div class="formula">Q = c · m · ΔT</div>
+            <ol>
+                <li><b>Ньютондун 1-закону:</b> Инерция закону.</li>
+                <li><b>Ньютондун 2-закону:</b> <span class="formula">F = m · a</span></li>
+                <li><b>Ньютондун 3-закону:</b> Аракетке каршы аракет.</li>
+                <li><b>Импульс:</b> <span class="formula">p = m · v</span></li>
+                <li><b>Кинетикалык энергия:</b> <span class="formula">Ek = (mv²) / 2</span></li>
+                <li><b>Потенциалдык энергия:</b> <span class="formula">Ep = mgh</span></li>
+                <li><b>Бүткүл дүйнөлүк тартылуу закону:</b> Массалардын өз ара аракеттешүүсү.</li>
+                <li><b>Сүрүлүү күчү:</b> Кыймылга тоскоолдук кылуучу күч.</li>
+                <li><b>Гук закону:</b> Серпилгичтүүлүк деформациясы.</li>
+                <li><b>Архимед закону:</b> Суюктуктагы түртүүчү күч.</li>
+            </ol>
         </div>
         
 
-[Image of a diagram showing heat transfer through conduction, convection, and radiation]
+[Image of Newton's laws of motion diagram]
 
+    </div>
+
+    <div id="thermo" class="page">
+        <h1>Термодинамика (10 негизги пункт)</h1>
+        <div class="card">
+            <ul>
+                <li>Жылуулук саны: <span class="formula">Q = cmΔT</span></li>
+                <li>Термодинамиканын 1-закону: Энергиянын сакталуу закону.</li>
+                <li>Изохоралык процесс: Көлөм туруктуу.</li>
+                <li>Изобаралык процесс: Басым туруктуу.</li>
+                <li>Изотермиялык процесс: Температура туруктуу.</li>
+                <li>Адиабаталык процесс: Жылуулук алмашуусуз процесс.</li>
+                <li>Энтропия: Системанын иретсиздиги.</li>
+                <li>Ички энергия: Бөлүкчөлөрдүн кыймыл энергиясы.</li>
+                <li>Карно циклы: Идеалдуу жылуулук машинасы.</li>
+                <li>Абсолюттук нөл: -273.15 °C.</li>
+            </ul>
+        </div>
+        
     </div>
 
     <div id="electro" class="page">
         <h1>Электр жана Магнитизм</h1>
         <div class="card">
-            <h3>Тизмек бөлүгү үчүн Омдун закону</h3>
-            <div class="formula">I = U / R</div>
-            <p>I — ток күчү, U — чыңалуу, R — каршылык.</p>
+            <ol>
+                <li>Кулон закону: Заряддардын өз ара аракеттешүүсү.</li>
+                <li>Ток күчү: <span class="formula">I = q / t</span></li>
+                <li>Ом закону: <span class="formula">I = U / R</span></li>
+                <li>Каршылык: <span class="formula">R = ρ · L / S</span></li>
+                <li>Джоуль-Ленц закону: <span class="formula">Q = I²Rt</span></li>
+                <li>Параллель туташтыруу: Чыңалуу бирдей.</li>
+                <li>Ырааттуу туташтыруу: Ток күчү бирдей.</li>
+                <li>Магнит талаасы: Кыймылдагы заряддарга таасир этет.</li>
+                <li>Лоренц күчү: Магнит талаасындагы зарядга таасир этүүчү күч.</li>
+                <li>Электромагниттик индукция: Фарадей закону.</li>
+            </ol>
         </div>
     </div>
 
     <div id="optics" class="page">
-        <h1>Оптика</h1>
+        <h1>Оптика (10 түшүнүк)</h1>
         <div class="card">
-            <h3>Жарыктын сынуу закону</h3>
-            <p>Жарык бир чөйрөдөн экинчисине өткөндө багытын өзгөртөт.</p>
-            <div class="formula">n = sin(α) / sin(β)</div>
+            <ul>
+                <li>Жарыктын түз сызык боюнча жайылышы.</li>
+                <li>Чагылуу закону: Түшүү бурчу чагылуу бурчуна барабар.</li>
+                <li>Сынуу закону: Снеллиус закону.</li>
+                <li>Толук ички чагылуу.</li>
+                <li>Линзалар: Чогултуучу жана чачыратуучу.</li>
+                <li>Дисперсия: Жарыктын түстөргө бөлүнүшү (асан-үсөн).</li>
+                <li>Интерференция: Толкундардын бири-бирине катталышы.</li>
+                <li>Дифракция: Толкундун тоскоолдукту айланып өтүшү.</li>
+                <li>Поляризация: Толкундун термелүү багытын чектөө.</li>
+                <li>Фотоэффект: Жарыктын заттан электрондорду бөлүп чыгаруусу.</li>
+            </ul>
         </div>
+        
     </div>
 
     <div id="quantum" class="page">
-        <h1>Кванттык Физика</h1>
+        <h1>Кванттык Физика (10 факт)</h1>
         <div class="card">
-            <h3>Планктын формуласы</h3>
-            <p>Кванттын энергиясы жыштыкка түз пропорционалдуу:</p>
-            <div class="formula">E = h · ν</div>
+            <ul>
+                <li>Квант — энергиянын эң кичине порциясы.</li>
+                <li>Планк закону: <span class="formula">E = h · ν</span></li>
+                <li>Гейзенбергдин белгисиздик принциби.</li>
+                <li>Шрёдингердин мышыгы: Кванттык суперпозиция.</li>
+                <li>Толкундук-бөлүкчөлүк дуализм.</li>
+                <li>Кванттык чырмалышуу (Entanglement).</li>
+                <li>Паули принциби: Электрондордун абалы.</li>
+                <li>Атомдун Бор модели.</li>
+                <li>Кванттык туннелдөө эффектиси.</li>
+                <li>Стандарттык модель: Кварктар жана лептондор.</li>
+            </ul>
         </div>
     </div>
 
     <div id="rel" class="page">
-        <h1>Салыштырмалуулук теориясы</h1>
+        <h1>Салыштырмалуулук (10 пункт)</h1>
         <div class="card">
-            <h3>Эйнштейндин эң белгилүү теңдемеси</h3>
-            <div class="formula">E = m · c²</div>
-            <p>Масса менен энергиянын өз ара байланышын көрсөтөт.</p>
+            <ol>
+                <li>Жарык ылдамдыгы бардык жерде туруктуу (c).</li>
+                <li>Убакыттын жайлашы: Жогорку ылдамдыкта убакыт жай өтөт.</li>
+                <li>Узундуктун кыскарышы.</li>
+                <li>Масса жана энергия байланышы: <span class="formula">E = mc²</span></li>
+                <li>Мейкиндик-убакыттын ийилиши.</li>
+                <li>Гравитациялык толкундар.</li>
+                <li>Кара тешиктердин окуялар горизонту.</li>
+                <li>Гравитациялык линзалоо.</li>
+                <li>Жалпы салыштырмалуулук теориясы (1915).</li>
+                <li>Атайын салыштырмалуулук теориясы (1905).</li>
+            </ol>
         </div>
     </div>
 
     <div id="space" class="page">
-        <h1>Астрофизика</h1>
+        <h1>Астрофизика (10 объект)</h1>
         <div class="card">
-            <h3>Кара тешиктер</h3>
-            <p>Гравитациясы ушунчалык күчтүү болгондуктан, ал жерден атүгүл жарык да качып чыга албайт.</p>
+            <ul>
+                <li>Күн: Бизге эң жакын жылдыз.</li>
+                <li>Чолпон: Эң ысык планета.</li>
+                <li>Марс: "Кызыл планета".</li>
+                <li>Юпитер: Эң чоң газ гиганты.</li>
+                <li>Сатурн: Шакектери менен белгилүү.</li>
+                <li>Нейтрондук жылдыздар: Өтө тыгыз объекттер.</li>
+                <li>Квазарлар: Ааламдагы эң жарык булактар.</li>
+                <li>Экзопланеталар: Башка жылдыздардын айланасындагы планеталар.</li>
+                <li>Кара материя: Ааламдын көрүнбөгөн бөлүгү.</li>
+                <li>Чоң жарылуу (Big Bang) теориясы.</li>
+            </ul>
         </div>
     </div>
 
     <div id="calc" class="page">
-        <h1>Интерактивдүү Калькулятор</h1>
+        <h1>Физикалык эсептөөлөр (10 кадам)</h1>
         <div class="card">
-            <h3>Күчтү эсептөө (Ньютондун закону)</h3>
-            <label>Масса (кг):</label><br>
-            <input type="number" id="mass" placeholder="Мисалы: 10"><br><br>
-            <label>Ылдамдануу (м/с²):</label><br>
-            <input type="number" id="accel" placeholder="Мисалы: 9.8"><br><br>
-            <button onclick="calculateForce()">Эсептөө</button>
-            <div id="calcResult" style="margin-top: 20px; font-size: 20px; color: var(--accent);"></div>
+            <p>1. Массаны киргиз. 2. Ылдамданууну жаз. 3. Күчтү ал...</p>
+            <input type="number" id="mass" placeholder="Масса (кг)">
+            <input type="number" id="acc" placeholder="Ылдамдануу (м/с²)">
+            <button onclick="calcF()">F = ma эсептөө</button>
+            <p id="res"></p>
+            <hr>
+            <p>Жакында кошулат: Энергия, Ток күчү, Ысык эсептегичтери.</p>
         </div>
     </div>
 
     <div id="test" class="page">
-        <h1>Өзүңдү текшер</h1>
+        <h1>Тесттер (10 суроо)</h1>
         <div class="card">
-            <p><b>Суроо 1:</b> Ток күчүнүн бирдиги эмне?</p>
-            <button onclick="checkTest(true)">Ампер</button>
-            <button onclick="checkTest(false)">Вольт</button>
-            <button onclick="checkTest(false)">Ватт</button>
-            <div id="testFeedback" style="margin-top: 15px;"></div>
+            <p>1. Күчтүн бирдиги? <b>Ньютон</b></p>
+            <p>2. Энергиянын бирдиги? <b>Джоуль</b></p>
+            <p>3. Чыңалуунун бирдиги? <b>Вольт</b></p>
+            <p>4. Ток күчүнүн бирдиги? <b>Ампер</b></p>
+            <p>5. Массанын бирдиги? <b>Килограмм</b></p>
+            <p>6. Убакыттын бирдиги? <b>Секунда</b></p>
+            <p>7. Кубаттуулуктун бирдиги? <b>Ватт</b></p>
+            <p>8. Каршылыктын бирдиги? <b>Ом</b></p>
+            <p>9. Температуранын бирдиги? <b>Кельвин</b></p>
+            <p>10. Жыштыктын бирдиги? <b>Герц</b></p>
         </div>
     </div>
 
     <footer>
-        <p>Физика Илимдер Академиясы &copy; 2026</p>
-        <p>Сайтты иштеп чыккан: <span class="highlight">Таалай</span></p>
+        &copy; 2026 Физика Порталы. Иштеп чыккан: <b>Таалай</b>
     </footer>
 </main>
 
 <script>
-    // Баракчаларды которуу функциясы
     function showPage(pageId) {
-        // Бардык баракчаларды жашыруу
-        const pages = document.querySelectorAll('.page');
-        pages.forEach(p => p.classList.remove('active'));
-
-        // Менюдагы активдүүлүктү алып салуу
-        const links = document.querySelectorAll('.nav-links a');
-        links.forEach(l => l.classList.remove('active'));
-
-        // Тандалган баракчаны көрсөтүү
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
         document.getElementById(pageId).classList.add('active');
         document.getElementById('link-' + pageId).classList.add('active');
-
-        // Өйдө жылдыруу
-        window.scrollTo(0, 0);
+        window.scrollTo(0,0);
     }
-
-    // Калькулятор функциясы
-    function calculateForce() {
-        const m = document.getElementById('mass').value;
-        const a = document.getElementById('accel').value;
-        if (m && a) {
-            const force = m * a;
-            document.getElementById('calcResult').innerText = "Жооп: Күч F = " + force + " Ньютон";
-        } else {
-            alert("Сураныч, сандарды киргизиңиз!");
-        }
-    }
-
-    // Тест текшерүү
-    function checkTest(isCorrect) {
-        const feedback = document.getElementById('testFeedback');
-        if (isCorrect) {
-            feedback.innerHTML = "<span style='color: #00ffcc;'>Туура! Азаматсыз!</span>";
-        } else {
-            feedback.innerHTML = "<span style='color: #ff4444;'>Ката. Кайра аракет кылып көрүңүз.</span>";
-        }
+    function calcF() {
+        let m = document.getElementById('mass').value;
+        let a = document.getElementById('acc').value;
+        document.getElementById('res').innerText = "Күч: " + (m * a) + " Н";
     }
 </script>
 
