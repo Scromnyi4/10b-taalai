@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Физика 2026 | Таалай тарабынан түзүлдү</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        :root {
+            --primary: #00d4ff;
+            --bg: #050a15;
+            --card-bg: #111b2d;
+            --text: #e2e8f0;
+            --accent: #00ffcc;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Капталдагы меню */
+        nav {
+            width: 280px;
+            background: #0a1428;
+            height: 100vh;
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #1e293b;
+            z-index: 100;
+        }
+
+        .nav-header {
+            padding: 30px 20px;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+            text-align: center;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .nav-links {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding-top: 20px;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            padding: 14px 25px;
+            color: #94a3b8;
+            text-decoration: none;
+            transition: 0.3s;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--primary);
+            border-left: 4px solid var(--primary);
+        }
+
+        .nav-links i { margin-right: 15px; width: 20px; text-align: center; }
+
+        /* Автордук блок (Sidebar астында) */
+        .sidebar-footer {
+            padding: 20px;
+            background: rgba(0,0,0,0.2);
+            border-top: 1px solid #1e293b;
+            text-align: center;
+        }
+
+        .author-badge {
+            font-size: 13px;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 5px 10px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        /* Негизги мазмун */
+        main {
+            margin-left: 280px;
+            padding: 40px;
+            width: 100%;
+            background: radial-gradient(circle at top right, #0f172a, #050a15);
+        }
+
+        .page {
+            display: none;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            border: 1px solid #1e293b;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        h1 { font-size: 32px; color: var(--primary); margin-bottom: 30px; }
+        h3 { color: var(--accent); margin-top: 0; }
+
+        .formula {
+            background: #000;
+            padding: 20px;
+            border-radius: 12px;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            display: block;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 1.4rem;
+            border-left: 5px solid var(--primary);
+        }
+
+        input, button {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            background: #1e293b;
+            color: white;
+            margin: 5px;
+        }
+
+        button {
+            background: var(--primary);
+            color: #050a15;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            transition: 0.3s;
+        }
+
+        button:hover { background: var(--accent); transform: scale(1.05); }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #64748b;
+            border-top: 1px solid #1e293b;
+            margin-top: 50px;
+        }
+
+        .highlight { color: var(--primary); font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-header">ФИЗИКА 2026</div>
+    <div class="nav-links">
+        <a onclick="showPage('home')" id="link-home" class="active"><i class="fas fa-th-large"></i> Башкы бет</a>
+        <a onclick="showPage('mech')" id="link-mech"><i class="fas fa-cog"></i> Механика</a>
+        <a onclick="showPage('thermo')" id="link-thermo"><i class="fas fa-fire"></i> Термодинамика</a>
+        <a onclick="showPage('electro')" id="link-electro"><i class="fas fa-bolt"></i> Электр</a>
+        <a onclick="showPage('optics')" id="link-optics"><i class="fas fa-lightbulb"></i> Оптика</a>
+        <a onclick="showPage('quantum')" id="link-quantum"><i class="fas fa-atom"></i> Кванттык физика</a>
+        <a onclick="showPage('rel')" id="link-rel"><i class="fas fa-infinity"></i> Салыштырмалуулук</a>
+        <a onclick="showPage('space')" id="link-space"><i class="fas fa-rocket"></i> Космос</a>
+        <a onclick="showPage('calc')" id="link-calc"><i class="fas fa-calculator"></i> Калькулятор</a>
+        <a onclick="showPage('test')" id="link-test"><i class="fas fa-tasks"></i> Тесттер</a>
+    </div>
+    <div class="sidebar-footer">
+        <span class="author-badge">👨‍💻 Автор: Таалай</span>
+    </div>
+</nav>
+
+<main>
+    <div id="home" class="page active">
+        <h1>Ааламдын сырларына кош келиңиз!</h1>
+        <div class="card">
+            <h3>Долбоор тууралуу</h3>
+            <p>Бул интерактивдүү платформа физика илиминин негизги мыйзамдарын жөнөкөй жана заманбап тилде түшүндүрөт. Сайт 2026-жылдын стандарттарына ылайык иштелип чыккан.</p>
+            <p>Түзүүчү: <span class="highlight">Таалай</span></p>
+        </div>
+        
+    </div>
+
+    <div id="mech" class="page">
+        <h1>Классикалык Механика</h1>
+        <div class="card">
+            <h3>Ньютондун экинчи мыйзамы</h3>
+            <p>Нерсеге таасир этүүчү күч анын массасы менен ылдамдануусунун көбөйтүндүсүнө барабар.</p>
+            <div class="formula">F = m · a</div>
+        </div>
+    </div>
+
+    <div id="thermo" class="page">
+        <h1>Термодинамика</h1>
+        <div class="card">
+            <h3>Жылуулук саны</h3>
+            <p>Затты ысытуу үчүн зарыл болгон жылуулук энергиясы:</p>
+            <div class="formula">Q = c · m · ΔT</div>
+        </div>
+        
+
+[Image of a diagram showing heat transfer through conduction, convection, and radiation]
+
+    </div>
+
+    <div id="electro" class="page">
+        <h1>Электр жана Магнитизм</h1>
+        <div class="card">
+            <h3>Тизмек бөлүгү үчүн Омдун закону</h3>
+            <div class="formula">I = U / R</div>
+            <p>I — ток күчү, U — чыңалуу, R — каршылык.</p>
+        </div>
+    </div>
+
+    <div id="optics" class="page">
+        <h1>Оптика</h1>
+        <div class="card">
+            <h3>Жарыктын сынуу закону</h3>
+            <p>Жарык бир чөйрөдөн экинчисине өткөндө багытын өзгөртөт.</p>
+            <div class="formula">n = sin(α) / sin(β)</div>
+        </div>
+    </div>
+
+    <div id="quantum" class="page">
+        <h1>Кванттык Физика</h1>
+        <div class="card">
+            <h3>Планктын формуласы</h3>
+            <p>Кванттын энергиясы жыштыкка түз пропорционалдуу:</p>
+            <div class="formula">E = h · ν</div>
+        </div>
+    </div>
+
+    <div id="rel" class="page">
+        <h1>Салыштырмалуулук теориясы</h1>
+        <div class="card">
+            <h3>Эйнштейндин эң белгилүү теңдемеси</h3>
+            <div class="formula">E = m · c²</div>
+            <p>Масса менен энергиянын өз ара байланышын көрсөтөт.</p>
+        </div>
+    </div>
+
+    <div id="space" class="page">
+        <h1>Астрофизика</h1>
+        <div class="card">
+            <h3>Кара тешиктер</h3>
+            <p>Гравитациясы ушунчалык күчтүү болгондуктан, ал жерден атүгүл жарык да качып чыга албайт.</p>
+        </div>
+    </div>
+
+    <div id="calc" class="page">
+        <h1>Интерактивдүү Калькулятор</h1>
+        <div class="card">
+            <h3>Күчтү эсептөө (Ньютондун закону)</h3>
+            <label>Масса (кг):</label><br>
+            <input type="number" id="mass" placeholder="Мисалы: 10"><br><br>
+            <label>Ылдамдануу (м/с²):</label><br>
+            <input type="number" id="accel" placeholder="Мисалы: 9.8"><br><br>
+            <button onclick="calculateForce()">Эсептөө</button>
+            <div id="calcResult" style="margin-top: 20px; font-size: 20px; color: var(--accent);"></div>
+        </div>
+    </div>
+
+    <div id="test" class="page">
+        <h1>Өзүңдү текшер</h1>
+        <div class="card">
+            <p><b>Суроо 1:</b> Ток күчүнүн бирдиги эмне?</p>
+            <button onclick="checkTest(true)">Ампер</button>
+            <button onclick="checkTest(false)">Вольт</button>
+            <button onclick="checkTest(false)">Ватт</button>
+            <div id="testFeedback" style="margin-top: 15px;"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Физика Илимдер Академиясы &copy; 2026</p>
+        <p>Сайтты иштеп чыккан: <span class="highlight">Таалай</span></p>
+    </footer>
+</main>
+
+<script>
+    // Баракчаларды которуу функциясы
+    function showPage(pageId) {
+        // Бардык баракчаларды жашыруу
+        const pages = document.querySelectorAll('.page');
+        pages.forEach(p => p.classList.remove('active'));
+
+        // Менюдагы активдүүлүктү алып салуу
+        const links = document.querySelectorAll('.nav-links a');
+        links.forEach(l => l.classList.remove('active'));
+
+        // Тандалган баракчаны көрсөтүү
+        document.getElementById(pageId).classList.add('active');
+        document.getElementById('link-' + pageId).classList.add('active');
+
+        // Өйдө жылдыруу
+        window.scrollTo(0, 0);
+    }
+
+    // Калькулятор функциясы
+    function calculateForce() {
+        const m = document.getElementById('mass').value;
+        const a = document.getElementById('accel').value;
+        if (m && a) {
+            const force = m * a;
+            document.getElementById('calcResult').innerText = "Жооп: Күч F = " + force + " Ньютон";
+        } else {
+            alert("Сураныч, сандарды киргизиңиз!");
+        }
+    }
+
+    // Тест текшерүү
+    function checkTest(isCorrect) {
+        const feedback = document.getElementById('testFeedback');
+        if (isCorrect) {
+            feedback.innerHTML = "<span style='color: #00ffcc;'>Туура! Азаматсыз!</span>";
+        } else {
+            feedback.innerHTML = "<span style='color: #ff4444;'>Ката. Кайра аракет кылып көрүңүз.</span>";
+        }
+    }
+</script>
+
+</body>
+</html>
